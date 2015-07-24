@@ -1,1 +1,1 @@
-Several scripts like installation scripts
+Several scripts like installation scripts.
