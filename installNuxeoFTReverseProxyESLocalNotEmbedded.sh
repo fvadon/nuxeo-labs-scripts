@@ -48,14 +48,14 @@ update-alternatives --set javaws /usr/lib/jvm/java-8/jre/bin/java
 update-alternatives --set jexec /usr/lib/jvm/java-8/lib/jexec
 
 # Install nuxeo 
-echo"-- Install Nuxeo"
+echo "-- Install Nuxeo"
 aptitude -q -y install nuxeo
 
 # Update some defaults
 update-alternatives --set editor /usr/bin/vim.basic
 
 # Configure reverse-proxy, might not be needed.
-echo"-- Install Apache on port 80"
+echo "-- Install Apache on port 80"
 cat << EOF > /etc/apache2/sites-available/nuxeo.conf
 <VirtualHost _default_:80>
 
@@ -101,7 +101,7 @@ apt-get update && apt-get install elasticsearch
 update-rc.d elasticsearch defaults 95 10
 
 # Config ES for Nuxeo 
-echo"-- Install Custom config for ES and Nuxeo"
+echo "-- Install Custom config for ES and Nuxeo"
 sed -i '$a #Param from FVN install script' /etc/elasticsearch/elasticsearch.yml
 sed -i '$a network.host: 127.0.0.1' /etc/elasticsearch/elasticsearch.yml # Restricting ES to access to local
 sed -i '$a cluster.name: nuxeoescluster' /etc/elasticsearch/elasticsearch.yml # Custom ES cluster
@@ -116,4 +116,4 @@ echo "-- Start Nuxeo and ES"
 service elasticsearch start
 service nuxeo restart
 
-echo"-- Finished"
+echo "-- Finished"
